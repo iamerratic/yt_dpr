@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import useForm from '../../hooks/useForm';
+
 function SignInComponent() {
 
-    var [username, setUsername] = useState('');
-    var [password, setPassword] = useState('');
+    var { data, change } = useForm();
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log({
-            username,
-            password
-        });
+        console.log(data);
     }
 
     return (
@@ -23,8 +22,7 @@ function SignInComponent() {
                 <h3>Sign In</h3>
                 <form onSubmit={handleSubmit}>
                     <TextField
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={change}
                         style={{ margin: '10px' }}
                         label="Username"
                         variant="outlined"
@@ -34,12 +32,11 @@ function SignInComponent() {
                         name="username"
                     />
                     <TextField
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={change}
                         style={{ margin: '10px' }}
                         label="password"
                         variant="outlined"
-                        type="text"
+                        type="password"
                         id="password"
                         placeholder="Password"
                         name="password"
@@ -51,4 +48,4 @@ function SignInComponent() {
     )
 }
 
-export default SignInComponent
+export default SignInComponent;

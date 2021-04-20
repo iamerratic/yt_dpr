@@ -1,66 +1,66 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import Form from '../../renderprops/Form'
+
+
 function SignUpComponent() {
 
-    var [username, setUsername] = useState('');
-    var [password, setPassword] = useState('');
-    var [name, setName] = useState('');
 
-    function handleSubmit(e) {
+    function handleSubmit(e, data) {
         e.preventDefault();
-        console.log({
-            name,
-            username,
-            password
-        });
+        console.log(data);
     }
+
     return (
-        <Card style={{ padding: '50px', margin: '50px', width: '300px' }}>
-            <CardContent>
-                <h3>Sign Up</h3>
-                <form onSubmit={handleSubmit}>
-                    <TextField
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        style={{ margin: '10px' }}
-                        label="Username"
-                        variant="outlined"
-                        type="text"
-                        id="username"
-                        placeholder="Username"
-                        name="username"
-                    />
-                    <TextField
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        style={{ margin: '10px' }}
-                        label="name"
-                        variant="outlined"
-                        type="text"
-                        id="name"
-                        placeholder="Name"
-                        name="name"
-                    />
-                    <TextField
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={{ margin: '10px' }}
-                        label="password"
-                        variant="outlined"
-                        type="text"
-                        id="password"
-                        placeholder="Password"
-                        name="password"
-                    />
-                    <Button type="submit" style={{ margin: '10px' }} variant="contained" color="primary">SignUp</Button>
-                </form>
-            </CardContent>
-        </Card>
+        <Form
+            render={(data, handleChange) => {
+                return (
+                    <Card style={{ padding: '50px', margin: '50px', width: '300px' }}>
+                        <CardContent>
+                            <h3>Sign Up</h3>
+                            <form onSubmit={(e) => handleSubmit(e, data)}>
+                                <TextField
+                                    onChange={handleChange}
+                                    style={{ margin: '10px' }}
+                                    label="Username"
+                                    variant="outlined"
+                                    type="text"
+                                    id="signup_username"
+                                    placeholder="Username"
+                                    name="username"
+                                />
+                                <TextField
+                                    onChange={handleChange}
+                                    style={{ margin: '10px' }}
+                                    label="name"
+                                    variant="outlined"
+                                    type="text"
+                                    id="signup_name"
+                                    placeholder="Name"
+                                    name="name"
+                                />
+                                <TextField
+                                    onChange={handleChange}
+                                    style={{ margin: '10px' }}
+                                    label="password"
+                                    variant="outlined"
+                                    type="password"
+                                    id="signup_password"
+                                    placeholder="Password"
+                                    name="password"
+                                />
+                                <Button type="submit" style={{ margin: '10px' }} variant="contained" color="primary">SignUp</Button>
+                            </form>
+                        </CardContent>
+                    </Card>
+                );
+            }}
+        />
     )
 }
 
-export default SignUpComponent
+export default SignUpComponent;
