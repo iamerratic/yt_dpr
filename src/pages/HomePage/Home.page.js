@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <div>
             <Header />
-            <PostList />
+            <PostList url={'https://jsonplaceholder.typicode.com/posts'} />
         </div>
     )
 }
