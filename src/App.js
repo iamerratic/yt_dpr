@@ -1,8 +1,10 @@
 import React from 'react';
 
+import HomePage from './pages/HomePage/Home.page';
+
 function App() {
   return (
-    <div>Design Patterns in React</div>
+    <HomePage />
   );
 }
 

@@ -1,0 +1,15 @@
+.userinfo {
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+}
+
+.userinfo__card {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  padding: 10px;
+  margin: 10px;
+}
